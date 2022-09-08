@@ -1,0 +1,23 @@
+version: "4.12"
+services:
+  jupyter:
+    build:
+      context: C:\Users\SpecialOne\AppData\Roaming\Docker
+      dockerfile: Dockerfile
+    volumes:
+      - C:\Users\SpecialOne:/home/jovyan/
+    ports:
+      - "8888:8888"
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports: 
+      - "5432:5432"
+volumes:
+  pgdata:
